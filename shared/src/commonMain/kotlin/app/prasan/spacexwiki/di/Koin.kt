@@ -5,9 +5,9 @@ import app.prasan.spacexwiki.contract.IRemoteDataSource
 import app.prasan.spacexwiki.contract.IRepository
 import app.prasan.spacexwiki.exception.NoNetworkAvailableException
 import app.prasan.spacexwiki.expectactual.PlatformKtorClientEngine
+import app.prasan.spacexwiki.httpconnection.HttpWebServiceHandler
 import app.prasan.spacexwiki.remotedatasource.ApplicationWebService
 import app.prasan.spacexwiki.repository.ApplicationRepository
-import app.prasan.spacexwiki.httpconnection.HttpWebServiceHandler
 import app.prasan.spacexwiki.usecase.GetSpaceXCompanyInfoUseCase
 import co.touchlab.kermit.Logger
 import co.touchlab.kermit.Severity
@@ -26,7 +26,6 @@ import org.koin.core.KoinApplication
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.context.startKoin
-import org.koin.core.logger.Level
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.singleOf
@@ -60,7 +59,7 @@ fun initKoin(appModule: Module): KoinApplication {
 private val coreModule = module {
 
     single(named("BaseUrl")) {
-        "api.spacexdata.com/v4"
+        "ktor.io"
     }
 
     single {

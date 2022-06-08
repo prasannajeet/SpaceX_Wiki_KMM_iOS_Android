@@ -3,8 +3,6 @@ package app.prasan.spacexwiki.viewmodel
 import app.prasan.spacexwiki.contract.MVIViewModel
 import app.prasan.spacexwiki.expectactual.ViewModel
 import app.prasan.spacexwiki.usecase.GetSpaceXCompanyInfoUseCase
-import co.touchlab.kermit.Logger
-import co.touchlab.kermit.Severity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch

@@ -12,7 +12,7 @@ internal class ApplicationWebService(
     override suspend fun getSpaceXCompanyInfo(): Flow<Result<String>> {
         return httpWebServiceHandler.performHttpConnection(
             HttpConnectivityType.GET(
-                "cores"
+                "docs"
             )
         )
     }

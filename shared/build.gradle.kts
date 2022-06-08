@@ -6,7 +6,7 @@ plugins {
     //id("io.realm.kotlin")
 }
 
-version = "1.0.0"
+version = "0.1.0"
 
 kotlin {
     android()
@@ -54,7 +54,7 @@ kotlin {
 
             dependencies {
                 //compileOnly("io.realm.kotlin:library:1.0.0")
-                implementation("io.ktor:ktor-client-okhttp:2.0.0")
+                implementation("io.ktor:ktor-client-okhttp:2.0.1")
 
                 api("com.google.android.material:material:1.6.1")
                 api("androidx.appcompat:appcompat:1.4.2")

@@ -3,7 +3,6 @@ package app.prasan.spacexwiki.di
 import app.prasan.spacexwiki.MainCallbackViewModel
 import app.prasan.spacexwiki.expectactual.ConnectivityManager
 import app.prasan.spacexwiki.expectactual.PlatformKtorClientEngine
-import app.prasan.spacexwiki.usecase.GetSpaceXCompanyInfoUseCase
 import co.touchlab.kermit.Logger
 import org.koin.core.Koin
 import org.koin.core.KoinApplication
@@ -13,7 +12,6 @@ import org.koin.core.module.dsl.singleOf
 import org.koin.core.parameter.parametersOf
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
-import platform.Foundation.NSUserDefaults
 
 fun initKoinIos(
     appInfo: String,

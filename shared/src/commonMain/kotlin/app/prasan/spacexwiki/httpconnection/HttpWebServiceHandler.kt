@@ -89,10 +89,11 @@ internal class HttpWebServiceHandler  constructor(
                         }
                         else -> throw IOException("Received error from server with code ${response.status}")
                     }
-
+                    httpClient.close()
                     return@flow
                 }
                 else -> throw NoNetworkAvailableException
+
             }
         }.catch { exception ->
             logger.d {
