@@ -1,4 +1,4 @@
-# SpaceX Wiki - iOS & Android apps build on Kotlin Multiplatform Mobile
+# SpaceX Wiki - iOS & Android apps built on Kotlin Multiplatform Mobile
 SpaceX Wiki is iOS and Android applications built using Kotlin Multiplatform Mobile framework which leverages the [SpaceX API](https://github.com/r-spacex/SpaceX-API)
 
 *The project and it's artifacts are currently in alpha, so is the KMM framework. There is no guarantee of any part of the code remaining the same as the application proceeds towards stable.*
