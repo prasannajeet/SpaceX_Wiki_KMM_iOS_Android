@@ -31,7 +31,6 @@ The idea is to create a shared business layer that can then be used by the Andro
 
 * [Structure of the Project](#Structure-of-the-Project)
 * [Overall Architecture](#Overall-Architecture)
-* [Coroutines and Ktor](#Coroutines-and-Ktor)
 * [Libraries and Dependencies](#Libraries-and-Dependencies)
   * [Ktor](#Ktor) - Networking
   * [Koin](#Koin) - Dependency Injection
@@ -40,7 +39,13 @@ The idea is to create a shared business layer that can then be used by the Andro
 
   <img src="img/basic-structure.png" width=500>
 
-As shown above, the **shared** module is the KMM module where the business logic of the application resides. The compiled artifacts from the shared module are imported into the Android and iOS application respectively.
+As shown above, the **shared** module is the KMM module where the business logic of the application
+resides. The compiled artifacts from the shared module are imported into the Android and iOS
+application respectively.
+
+The **androidCore** module is the base android module on top of which we will build feature modules
+that then connect up to the app module in order to build out the features. It also contains the
+Jetpack Compose components and themes that will be used across the feature modules.
 
 The project structures inside Android Studio and Xcode are as shown below
 <p align="center">
@@ -48,7 +53,8 @@ The project structures inside Android Studio and Xcode are as shown below
   <img src="img/xcode-project-structure.png" height=400 hspace=8>
 </p>
 
-The project structure is broken up into three different directories: 
+The project structure is broken up into three different directories:
+
 * shared
 * androidApp
 * iosApp
@@ -71,7 +77,7 @@ Each of these directories has the same folder structure: the language type, then
 
 ## Overall Architecture
 
-  <img src="img/top-level-arch.jpeg" width=500/>
+  <img src="img/top-level-arch.svg" width=500/>
 
 ## Libraries and Dependencies
 
