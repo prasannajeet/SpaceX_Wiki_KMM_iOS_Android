@@ -6,6 +6,7 @@ import app.prasan.spacexwiki.contract.IRepository
 import app.prasan.spacexwiki.exception.NoNetworkAvailableException
 import app.prasan.spacexwiki.expectactual.PlatformKtorClientEngine
 import app.prasan.spacexwiki.httpconnection.HttpWebServiceHandler
+import app.prasan.spacexwiki.models.datamapper.CompanyInfoResponseMapper
 import app.prasan.spacexwiki.remotedatasource.ApplicationWebService
 import app.prasan.spacexwiki.repository.ApplicationRepository
 import app.prasan.spacexwiki.usecase.GetSpaceXCompanyInfoUseCase
@@ -59,7 +60,7 @@ fun initKoin(appModule: Module): KoinApplication {
 private val coreModule = module {
 
     single(named("BaseUrl")) {
-        "ktor.io"
+        "api.spacexdata.com/v4"
     }
 
     single {
@@ -86,10 +87,15 @@ private val coreModule = module {
             }
 
             install(Logging) {
-                level = LogLevel.HEADERS
-                logger = object: io.ktor.client.plugins.logging.Logger {
+                level = LogLevel.ALL
+                logger = object : io.ktor.client.plugins.logging.Logger {
                     override fun log(message: String) {
-                        get<Logger>(parameters = {parametersOf("Ktor-Log")}).log(Severity.Debug, "KtorLogging", null, message)
+                        get<Logger>(parameters = { parametersOf("Ktor-Log") }).log(
+                            Severity.Debug,
+                            "KtorLogging",
+                            null,
+                            message
+                        )
                     }
                 }
             }
@@ -125,11 +131,14 @@ private val coreModule = module {
 
     singleOf(::GetSpaceXCompanyInfoUseCase)
 
+    singleOf(::CompanyInfoResponseMapper)
+
     // platformLogWriter() is a relatively simple config option, useful for local debugging. For production
     // uses you *may* want to have a more robust configuration from the native platform. In KaMP Kit,
     // that would likely go into platformModule expect/actual.
     // See https://github.com/touchlab/Kermit
-    val baseLogger = Logger(config = StaticConfig(logWriterList = listOf(platformLogWriter())), "SpaceX-KMM")
+    val baseLogger =
+        Logger(config = StaticConfig(logWriterList = listOf(platformLogWriter())), "SpaceX-KMM")
     factory { (tag: String?) -> if (tag != null) baseLogger.withTag(tag) else baseLogger }
     single { HttpWebServiceHandler(get(), get(), get<Logger> { parametersOf(null) }) }
 }

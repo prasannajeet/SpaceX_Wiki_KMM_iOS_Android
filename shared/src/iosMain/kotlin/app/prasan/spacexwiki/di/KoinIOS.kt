@@ -1,6 +1,5 @@
 package app.prasan.spacexwiki.di
 
-import app.prasan.spacexwiki.MainCallbackViewModel
 import app.prasan.spacexwiki.expectactual.ConnectivityManager
 import app.prasan.spacexwiki.expectactual.PlatformKtorClientEngine
 import co.touchlab.kermit.Logger
@@ -28,7 +27,6 @@ fun initKoinIos(
 actual val platformModule : Module = module {
     singleOf(::ConnectivityManager)
     singleOf(::PlatformKtorClientEngine)
-    singleOf(::MainCallbackViewModel)
 }
 
 // Access from Swift to create a logger
@@ -39,5 +37,5 @@ fun Koin.loggerWithTag(tag: String) =
 // Access from Swift to get VM instance
 @Suppress("unused") // Called from Swift
 object KotlinDependencies : KoinComponent {
-    fun getMainCallbackViewModel() = getKoin().get<MainCallbackViewModel>()
+    //fun getMainCallbackViewModel() = getKoin().get<MainCallbackViewModel>()
 }

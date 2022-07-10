@@ -1,5 +1,6 @@
 package app.prasan.spacexwiki.contract
 
+import app.prasan.spacexwiki.models.dao.CompanyInfo
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -8,5 +9,5 @@ import kotlinx.coroutines.flow.Flow
  * @since 1.0
  */
 interface IRepository {
-    suspend fun getSpaceXCompanyInfo(): Flow<Result<String>>
+    suspend fun getSpaceXCompanyInfo(forceRefresh: Boolean): Flow<Result<CompanyInfo>>
 }
